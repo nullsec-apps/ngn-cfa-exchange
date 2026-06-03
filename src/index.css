@@ -1,0 +1,170 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --font-sans: 'Inter Tight', sans-serif;
+  --font-display: 'Sora', sans-serif;
+  --bg: #0E1419;
+  --surface: #161E26;
+  --text: #EAF1F4;
+  --muted: #7E8C97;
+  --accent: #10C97E;
+  --accent2: #F4B740;
+  --hairline: rgba(126, 140, 151, 0.16);
+}
+
+* {
+  border-color: var(--hairline);
+}
+
+html,
+body,
+#root {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  background-color: var(--bg);
+  color: var(--text);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+  text-rendering: optimizeLegibility;
+}
+
+.font-display {
+  font-family: var(--font-display);
+  letter-spacing: -0.02em;
+}
+
+.font-sans {
+  font-family: var(--font-sans);
+}
+
+/* Tabular monospaced lining numerals for money figures */
+.tabular {
+  font-family: 'JetBrains Mono', 'Space Mono', ui-monospace, monospace;
+  font-variant-numeric: tabular-nums lining-nums;
+  font-feature-settings: 'tnum' 1, 'lnum' 1;
+  letter-spacing: -0.01em;
+}
+
+.tabular-num {
+  font-variant-numeric: tabular-nums lining-nums;
+  font-feature-settings: 'tnum' 1, 'lnum' 1;
+}
+
+/* Hairline divider helper */
+.hairline {
+  background-color: var(--hairline);
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(126, 140, 151, 0.25);
+  border-radius: 9999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(126, 140, 151, 0.4);
+}
+
+/* Rate refresh soft pulse — breathes, never jumps */
+@keyframes ratePulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(16, 201, 126, 0.35);
+    transform: scale(1);
+  }
+  40% {
+    box-shadow: 0 0 0 6px rgba(16, 201, 126, 0);
+    transform: scale(1.012);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(16, 201, 126, 0);
+    transform: scale(1);
+  }
+}
+.rate-pulse {
+  animation: ratePulse 1.4s ease-out;
+}
+
+@keyframes softGlow {
+  0%,
+  100% {
+    opacity: 0.55;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+.live-dot {
+  animation: softGlow 1.8s ease-in-out infinite;
+}
+
+/* Stepper node ripple */
+@keyframes nodeRipple {
+  0% {
+    box-shadow: 0 0 0 0 rgba(16, 201, 126, 0.5);
+  }
+  100% {
+    box-shadow: 0 0 0 10px rgba(16, 201, 126, 0);
+  }
+}
+.node-ripple {
+  animation: nodeRipple 1.6s ease-out infinite;
+}
+
+/* Number roll on change */
+@keyframes numRoll {
+  0% {
+    transform: translateY(35%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+.num-roll {
+  animation: numRoll 0.32s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.fade-up {
+  animation: fadeUp 0.4s ease-out both;
+}
+
+/* Inputs: prevent iOS zoom + comfortable touch height */
+input,
+select,
+textarea {
+  font-size: 16px;
+}
+
+.transition-base {
+  transition: all 200ms ease;
+}
+
+/* Selection */
+::selection {
+  background: rgba(16, 201, 126, 0.3);
+  color: var(--text);
+}
